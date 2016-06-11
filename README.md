@@ -1,4 +1,4 @@
-# dskmoney
+# dskmoney [![Build Status](https://travis-ci.org/dskarataev/dskmoney-golang.svg?branch=master)](https://travis-ci.org/dskarataev/dskmoney-golang)
 
 Simple but powerful application for personal accounting. Totally open source.
 

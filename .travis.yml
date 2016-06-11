@@ -4,6 +4,8 @@ go:
  - 1.5
  - 1.6
 
-install: godep restore -v
+install:
+ - go get -u github.com/tools/godep
+ - godep restore -v
 script:
  - go test -v ./...

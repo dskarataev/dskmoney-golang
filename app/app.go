@@ -21,6 +21,9 @@ func (this *App) Init() error {
 	}
 
 	// router and HTTP server
+	if this.Config.Env == config.ProductionEnv {
+		gin.SetMode(gin.ReleaseMode)
+	}
 	this.Engine = gin.Default()
 
 	// templates

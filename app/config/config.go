@@ -1,6 +1,7 @@
 package config
 
 import (
+	"dskmoney-golang/app/utils"
 	"github.com/go-ini/ini"
 	"fmt"
 )
@@ -8,6 +9,14 @@ import (
 const (
 	ConfigPath = "etc/"
 	BaseConfig = "base.ini"
+
+	ProductionEnv = "production"
+	DevEnv = "dev"
+	DefaultEnv = DevEnv
+)
+
+var (
+	AllowedEnvs = []string{ProductionEnv, DevEnv}
 )
 
 type App struct {
@@ -43,11 +52,15 @@ func (this *Config) Init() error {
 
 	// settings from environment variables are more important
 	envCfg := ReadEnvConfig()
-	if envCfg.Env != "" {
+	if utils.StrInSlice(envCfg.Env, AllowedEnvs) {
+		this.Env = envCfg.Env
+
 		err := cfg.Append(ConfigPath + envCfg.Env + ".ini")
 		if err != nil {
-			fmt.Println(envCfg.Env + "config does not exist. Only base config was used.")
+			fmt.Println(envCfg.Env + " config does not exist. Only base config was used.")
 		}
+	} else {
+		this.Env = DefaultEnv
 	}
 
 	err = cfg.MapTo(this)
@@ -60,6 +73,6 @@ func (this *Config) Init() error {
 		this.Port = envCfg.Port
 	}
 
-	fmt.Printf("Config: %#v", this)
+	fmt.Printf("Config: %#v\n", this)
 	return nil
 }

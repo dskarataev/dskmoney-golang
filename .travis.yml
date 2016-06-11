@@ -1,7 +1,9 @@
 language: go
+go_import_path: dskmoney-golang
 go:
  - 1.5
  - 1.6
 
+install: godep restore -v
 script:
  - go test -v ./...

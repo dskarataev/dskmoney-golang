@@ -1,7 +1,7 @@
 package config
 
 import (
-	"dskmoney-golang/app/utils"
+	"dskmoney-golang/dskmoney/utils"
 	"github.com/go-ini/ini"
 	"fmt"
 )

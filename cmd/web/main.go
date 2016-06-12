@@ -1,7 +1,7 @@
 package main
 
 import (
-	"dskmoney-golang/app"
+	"dskmoney-golang/dskmoney"
 )
 
 func main() {

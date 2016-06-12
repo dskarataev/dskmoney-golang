@@ -1,7 +1,7 @@
 package dskmoney
 
 import (
-	"dskmoney-golang/app/config"
+	"dskmoney-golang/dskmoney/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,7 +27,7 @@ func (this *App) Init() error {
 	this.Engine = gin.Default()
 
 	// templates
-	this.Engine.LoadHTMLGlob("app/templates/*")
+	this.Engine.LoadHTMLGlob("dskmoney/templates/*")
 
 	// routes
 	this.addRoutes()

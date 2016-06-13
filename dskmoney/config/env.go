@@ -5,13 +5,21 @@ import (
 )
 
 type EnvConfig struct {
-	Port       string
-	Env        string
+	Deploy
+	DB
 }
 
 func ReadEnvConfig() EnvConfig {
 	return EnvConfig{
-		Port: os.Getenv("PORT"),
-		Env: os.Getenv("ENV"),
+		Deploy: Deploy{
+			Env:  os.Getenv("ENV"),
+			Port: os.Getenv("PORT"),
+		},
+		DB: DB{
+			Addr:   os.Getenv("DB_ADDR"),
+			User:   os.Getenv("DB_USER"),
+			Passwd: os.Getenv("DB_PASSWD"),
+			Name:   os.Getenv("DB_NAME"),
+		},
 	}
 }

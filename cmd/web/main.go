@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	app := dskmoney.NewApp()
+	app := dskmoney.NewDSKMoney()
 
 	if err := app.Init(); err != nil {
 		panic("Init error: " + err.Error())

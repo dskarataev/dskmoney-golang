@@ -4,7 +4,7 @@ import (
 	"dskmoney-golang/dskmoney/accounts"
 )
 
-func (this *App) addRoutes() {
+func (this *DSKMoney) addRoutes() {
 	this.Engine.GET("/", accounts.AccountsHandler)
 	accounts.AddRoutes(this.Engine.Group("/accounts"))
 }

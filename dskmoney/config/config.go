@@ -2,8 +2,8 @@ package config
 
 import (
 	"dskmoney-golang/dskmoney/utils"
-	"github.com/go-ini/ini"
 	"fmt"
+	"github.com/go-ini/ini"
 )
 
 const (
@@ -11,29 +11,34 @@ const (
 	BaseConfig = "base.ini"
 
 	ProductionEnv = "production"
-	DevEnv = "dev"
-	DefaultEnv = DevEnv
+	DevEnv        = "dev"
+	DefaultEnv    = DevEnv
 )
 
 var (
 	AllowedEnvs = []string{ProductionEnv, DevEnv}
 )
 
-type App struct {
-	Env string `ini:"env"`
+type Apps struct {
+	Installed []string `ini:"installed_apps"`
+}
+
+type Deploy struct {
+	Env  string `ini:"env"`
 	Port string `ini:"port"`
 }
 
 type DB struct {
-	Host      string `ini:"db_host"`
-	Name      string `ini:"db_name"`
-	User      string `ini:"db_user"`
-	Password  string `ini:"db_password"`
+	Addr   string `ini:"db_addr"`
+	Name   string `ini:"db_name"`
+	User   string `ini:"db_user"`
+	Passwd string `ini:"db_passwd"`
 }
 
 type Config struct {
-	App `ini:"DEFAULT"`
-	DB `ini:"DEFAULT"`
+	Apps   `ini:"DEFAULT"`
+	DB     `ini:"DEFAULT"`
+	Deploy `ini:"DEFAULT"`
 }
 
 func NewConfig() *Config {
@@ -68,9 +73,9 @@ func (this *Config) Init() error {
 		return err
 	}
 
-	// Port from environment variable is more important
+	// Environment variables are more important than config file
 	if envCfg.Port != "" {
-		this.Port = envCfg.Port
+		this.Deploy.Port = envCfg.Port
 	}
 
 	fmt.Printf("Config: %#v\n", this)

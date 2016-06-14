@@ -7,7 +7,7 @@ import (
 	"gopkg.in/pg.v4/types"
 )
 
-const defaultTableName = "gopg_migrations"
+const defaultTableName = "migrations"
 
 var tableName = defaultTableName
 

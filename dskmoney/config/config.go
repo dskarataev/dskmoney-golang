@@ -19,10 +19,6 @@ var (
 	AllowedEnvs = []string{ProductionEnv, DevEnv}
 )
 
-type Apps struct {
-	Installed []string `ini:"installed_apps"`
-}
-
 type Deploy struct {
 	Env  string `ini:"env"`
 	Port string `ini:"port"`
@@ -36,7 +32,6 @@ type DB struct {
 }
 
 type Config struct {
-	Apps   `ini:"DEFAULT"`
 	DB     `ini:"DEFAULT"`
 	Deploy `ini:"DEFAULT"`
 }

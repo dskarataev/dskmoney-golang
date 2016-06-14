@@ -19,6 +19,6 @@ func logMigrationResult(appName string, oldVersion, newVersion int64, err error)
 		return err
 	}
 
-	fmt.Printf("App %s was migrated from version %d to %d", appName, oldVersion, newVersion)
+	fmt.Printf("App %s was migrated from version %d to %d\n", appName, oldVersion, newVersion)
 	return nil
 }

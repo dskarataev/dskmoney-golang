@@ -8,8 +8,8 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/dskarataev/migrations",
-			"Comment": "v4.0.0-7-g8cf3b91",
-			"Rev": "8cf3b9179d2744e52bbda9e92e8be30c64f7a447"
+			"Comment": "v4.0.0-9-g899fb11",
+			"Rev": "899fb111e2c5089c3222445ffa892674862b58a6"
 		},
 		{
 			"ImportPath": "github.com/gin-gonic/gin",
